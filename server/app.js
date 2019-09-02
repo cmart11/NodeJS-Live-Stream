@@ -8,6 +8,11 @@ const express = require('express'),
     flash = require('connect-flash'),
     port = 3333,
     app = express();
+
+const passport = require('./auth/passport');
+ 
+app.use(passport.initialize());
+app.use(passport.session());
  
 mongoose.connect('mongodb://127.0.0.1/nodeStream' , { useNewUrlParser: true });
  
@@ -32,3 +37,8 @@ app.get('*', middleware.ensureLoggedIn(), (req, res) => {
 });
  
 app.listen(port, () => console.log(`App listening on ${port}!`));
+
+// Register app routes
+
+app.use('/login', require('./routes/login'));
+app.use('/register', require('./routes/register'));
