@@ -44,3 +44,4 @@ node_media_server.run();
 
 app.use('/login', require('./routes/login'));
 app.use('/register', require('./routes/register'));
+app.use('/streams', require('./routes/streams'));
