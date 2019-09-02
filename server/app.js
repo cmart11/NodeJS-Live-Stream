@@ -13,6 +13,7 @@ const passport = require('./auth/passport');
  
 app.use(passport.initialize());
 app.use(passport.session());
+app.use('/settings', require('./routes/settings'));
  
 mongoose.connect('mongodb://127.0.0.1/nodeStream' , { useNewUrlParser: true });
  
