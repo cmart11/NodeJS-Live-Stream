@@ -8,7 +8,7 @@ const express = require('express'),
     flash = require('connect-flash'),
     port = 3333,
     app = express();
-
+const node_media_server = require('./media_server');
 const passport = require('./auth/passport');
  
 app.use(passport.initialize());
@@ -37,6 +37,8 @@ app.get('*', middleware.ensureLoggedIn(), (req, res) => {
 });
  
 app.listen(port, () => console.log(`App listening on ${port}!`));
+
+node_media_server.run();
 
 // Register app routes
 
